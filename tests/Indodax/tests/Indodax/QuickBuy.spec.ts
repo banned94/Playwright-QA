@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { QuickbuyAssets as MyPage, QuickbuyAssets } from '../Indodax/data/quickbuy_assets';
+import { QuickbuyAssets as MyPage, QuickbuyAssets } from './data/quickbuy_assets';
 const url = 'https://indodax.com/quick_buy';
 
 test.beforeEach(async ({ page }) => {
