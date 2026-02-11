@@ -2,11 +2,25 @@ import { test, expect, Page } from '@playwright/test';
 import { QuickbuyAssets as MyPage, QuickbuyAssets } from '../Indodax/data/quickbuy_assets';
 const url = 'https://indodax.com/quick_buy';
 
+test.beforeEach(async ({ page }) => {
+ 
+  await page.goto(url);
+  await page.waitForTimeout(5000);
+  const cobaBtn = page.getByRole('button', { name: 'Coba Sekarang' });
+  if (await cobaBtn.isVisible()) {
+    await cobaBtn.click();
+  }
+
+  const lewatiBtn = page.getByRole('button', { name: 'Lewati' });
+  if (await lewatiBtn.isVisible()) {
+    await lewatiBtn.click();
+  } 
+});
+
 test('Verify amount is shown correctly', async ({ page }) => {
   const quickbuy = new MyPage(page);
-  await page.goto(url);
-  await page.getByRole('button', { name: 'Coba Sekarang' }).click();
-  await page.getByRole('button', { name: 'Lewati' }).click();
+  await page.goto(url); 
+  await quickbuy.Button100.waitFor({state: 'visible'})
   await quickbuy.Button100.click();
   const amountshow = page.getByRole('textbox', { name: 'Nominal Pembelian' });
   await expect(amountshow).toBeVisible();
@@ -29,7 +43,7 @@ async function getUsdtPrice(page: Page) {
 }
 
 test('Calculate USDT price ', async ({ page }) => {
-  await page.waitForTimeout(5000); // wait for 5 seconds
+  await page.waitForTimeout(5000);
   const getPrice = await getUsdtPrice(page);
   console.log('FIRST PRICE:', getPrice);
 
@@ -40,5 +54,6 @@ test('Calculate USDT price ', async ({ page }) => {
   await page.getByRole('button', { name: '1.000.000' }).click();
   expect(await page.getByRole('textbox', { name: 'Total Aset' }).inputValue()).toBe(formatted);
   console.log('DISPLAYED PRICE:', formatted);
+
 
 });
