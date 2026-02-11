@@ -5,7 +5,7 @@ const url = 'https://indodax.com/quick_buy';
 test.beforeEach(async ({ page }) => {
  
   await page.goto(url);
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(6000);
   const cobaBtn = page.getByRole('button', { name: 'Coba Sekarang' });
   if (await cobaBtn.isVisible()) {
     await cobaBtn.click();
