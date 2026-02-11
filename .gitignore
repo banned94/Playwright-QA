@@ -11,3 +11,4 @@ node_modules/
 /Indodax/.github/
 .github/workflows/playwright.yml
 .vscode/
+e2e/
