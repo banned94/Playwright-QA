@@ -9,6 +9,7 @@ export class QuickbuyAssets {
   readonly ButtonCobaSekarang: Locator;
   readonly ButtonLewati: Locator;
   readonly EstRecieved: Locator;
+  readonly CariKoin: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -20,5 +21,6 @@ export class QuickbuyAssets {
     this.ButtonCobaSekarang = page.getByRole('button', { name: 'Coba Sekarang' });
     this.ButtonLewati = page.getByRole('button', { name: 'Lewati' });
     this.EstRecieved = page.getByRole('textbox', { name: 'Total Aset' });
+    this.CariKoin = page.getByRole('textbox', { name: 'Cari Koin' });
   }
 }
