@@ -1,6 +1,5 @@
-import { test, expect, Page, Locator } from '@playwright/test';
+import { test, expect, Page, Locator } from '@playwright/test'; 
 import { QuickbuyAssets as MyPage } from './data/quickbuy_assets';
-import { parse } from 'node:path';
 const url = 'https://indodax.com/quick_buy';
 
 let quickbuy: MyPage;
