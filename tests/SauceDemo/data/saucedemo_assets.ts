@@ -8,7 +8,9 @@ export class SauceDemoAssets {
   readonly LoginButton: Locator;
   readonly UsernameField: Locator;
   readonly PasswordField: Locator;
-  readonly url: string = 'https://www.saucedemo.com/';
+  readonly shoppingCartLink: Locator;
+  readonly checkoutButton: Locator;
+  readonly url = process.env.BASE_URL!;
 
 
   constructor(page: Page) {
@@ -20,5 +22,7 @@ export class SauceDemoAssets {
     this.LoginButton = page.getByRole('button', { name: 'Login' });
     this.UsernameField = page.getByPlaceholder('Username');
     this.PasswordField = page.getByPlaceholder('Password');
+    this.shoppingCartLink = page.locator('[data-test="shopping-cart-link"]'); 
+    this.checkoutButton = page.locator('[data-test="checkout"]');
   }
 }
